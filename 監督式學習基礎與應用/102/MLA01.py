@@ -10,7 +10,7 @@ print('raw data')
 
 # 將年齡的空值填入年齡的中位數
 median_age = titanic['Age'].median()  # 計算年齡中位數
-titanic['Age'] = titanic['Age'].fillna(median_age) # 修正寫法
+titanic['Age'] = titanic['Age'].fillna(median_age) # 修正寫法，且不可擅自改成取整數，會影響答案
 #titanic['Age'].fillna(median_age, inplace = True)  # 用中位數填補 NA
 # =============================================================================
 # FutureWarning: A value is trying to be set on a copy of a DataFrame or Series 
