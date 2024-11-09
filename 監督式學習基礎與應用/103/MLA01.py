@@ -6,68 +6,73 @@ from sklearn.ensemble import RandomForestClassifier
 input_file = 'cardata.txt'
 
 # Reading the data
-X = []
-y = []
+import pandas as pd
+
+data = pd.read_csv(input_file)
+print(data.columns)        
+
+data = pd.read_csv(input_file, header = None)
+df = data.copy()
+print(df)
 # TODO
-with open(input_file, 'r') as f:
-    for line in f.readlines():
-        data = line.strip().split(',')
-        X.append(data[:-1])
-        y.append(data[-1])
+
 
 # Convert string data to numerical data將字串資料轉換為數值資料
 # TODO
-label_encoder = []
-X_encoded = np.empty((len(X), len(X[0])))
-for i, item in enumerate(X[0]):
-    label_encoder.append(preprocessing.LabelEncoder())
-    X_encoded[:, i] = label_encoder[-1].fit_transform([x[i] for x in X])
+en_df = pd.DataFrame()
+encoders = []
 
-label_encoder_y = preprocessing.LabelEncoder()
-y_encoded = label_encoder_y.fit_transform(y)
+for i in range(len(data.columns)):
+    encoder = preprocessing.LabelEncoder()
+# =============================================================================
+#     fit(df[i])：只學習如何將 df[i] 中的類別值轉換成數字，但不實際執行轉換。
+#     fit_transform(df[i])：同時學習編碼規則並轉換資料。
+# =============================================================================
+    en_df[i] = encoder.fit_transform(df[i])
+    encoders.append(encoder)  # Storing encoder for each column
+
+print(en_df)
+
+X = en_df.iloc[:, :-1]
+y = en_df.iloc[:, -1]
 
 # Build a Random Forest classifier建立隨機森林分類器
 # TODO
-classifier = RandomForestClassifier(n_estimators = 200, max_depth = 8, 
-                                    random_state = 7)
-classifier.fit(X_encoded, y_encoded)
+cl = RandomForestClassifier(n_estimators = 200, max_depth = 8, 
+                            random_state = 7)
+cl.fit(X, y)
 
 # Cross validation交叉驗證
 from sklearn import model_selection
 # TODO
-accuracy = model_selection.cross_val_score(classifier, X_encoded, y_encoded, 
-                                           cv = 3)
-print(f"Accuracy of the classifier= {accuracy.mean() * 100:.2f} %")
+acc = model_selection.cross_val_score(cl, X, y, cv = 3)
+print(acc)
+
+print("Accuracy of the classifier=", round(acc.mean() * 100, 2), "%")
 
 # Testing encoding on single data instance測試單個資料實例上的編碼
-input_data = ['high', 'low', '2', 'more', 'med', 'high']
+input_data = pd.DataFrame(['high', 'low', '2', 'more', 'med', 'high']).T
 # TODO
-input_data_encoded = [-1] * len(input_data)
-for i, item in enumerate(input_data):
-    input_data_encoded[i] = label_encoder[i].transform([item])[0]
-
+# 因 encode 每次輸入為特定欄位下的 "所有類別，因此需反轉成相應欄位數供轉換。
+for col in range(input_data.shape[1]):
+    input_data[col] = encoders[col].transform(input_data[col])
+    
+test = cl.predict(input_data)
+print("Output class=", test)
 
 # Predict and print output for a particular datapoint
 # TODO
-predicted_class = classifier.predict([input_data_encoded])[0]
-print(f"Output class= {label_encoder_y.inverse_transform([predicted_class])[0]}")
-
+print("Output class=", encoders[-1].inverse_transform(test))
 
 ########################
 # Validation curves 驗證曲線
-
-# TODO
 from sklearn.model_selection import validation_curve
 
+# TODO
 parameter_grid = np.linspace(25, 200, 8).astype(int)
-train_scores, validation_scores = validation_curve(classifier, X_encoded, 
-                                                   y_encoded, 
-                                                   param_name = "n_estimators", 
-                                                   param_range = parameter_grid, 
-                                                   cv = 5)
+
+train_scores, validation_scores = validation_curve(cl, X, y, 
+        param_name = "n_estimators", param_range = parameter_grid, cv = 5)
 print("##### VALIDATION CURVES #####")
-print(f"\nParam: n_estimators\nTraining scores: {train_scores[0][0]:.5f}") # 小數點後第四位無條件捨去
-print(f"\nParam: n_estimators\nValidation scores: {validation_scores[-1][0]:.5f}") # 小數點後第四位無條件捨去
-
-
-
+print("\nParam: n_estimators\nTraining scores:\n", round(train_scores[0][0], 4))
+print("\nParam: n_estimators\nValidation scores:\n", round(validation_scores[-1][0], 4))
