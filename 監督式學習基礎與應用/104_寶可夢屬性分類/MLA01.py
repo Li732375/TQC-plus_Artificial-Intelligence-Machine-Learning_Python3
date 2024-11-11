@@ -11,7 +11,7 @@ df = df.dropna(subset = features)
 
 # 取出目標寶可夢的 Type1 與兩個特徵欄位
 # TODO
-df = df[df['Type1'].isin(['Normal', 'Fighting', 'Ghost'])] # 過濾出指定類型
+df = df[df['Type1'].isin(['Normal', 'Fighting', 'Ghost'])] # 從欄 'Type1' 的多樣類型裡，過濾出部分指定類型
 # =============================================================================
 # 檢查某列或 Series 中的值是否存在於給定的列表或集合中。返回一個布林值序列，指出每個
 # 元素是否在指定的列表或集合中。
@@ -53,6 +53,8 @@ classifier.fit(X_scaled, y_encoded)
 # 計算分類錯誤的數量
 # TODO
 y_pred = classifier.predict(X_scaled)
+
+#沒有內建的函數來直接計算錯誤數量。
 num_errors = (y_pred != y_encoded).sum() 
 # 計算布林數組中 True 的數量，也就是計算 y_pred 和 y_encoded 不相等的元素個數。
 print(f'Number of classification errors: {num_errors}')
@@ -72,6 +74,8 @@ print(f'F1-score: {f1:.4f}')
 # 預測未知寶可夢的 Type1
 # TODO
 unknown_pokemon = [[100, 75]]
+#unknown_pokemon = pd.DataFrame([100, 75]).T
+
 unknown_pokemon_scaled = scaler.transform(unknown_pokemon) # 標準化
 predicted_type = classifier.predict(unknown_pokemon_scaled) # 模型預測
 predicted_label = label_encoder.inverse_transform(predicted_type) # 轉換回其原始的類別名稱。
