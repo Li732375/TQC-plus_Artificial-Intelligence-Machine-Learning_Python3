@@ -4,8 +4,6 @@
 *.xml
 *.yaml
 *.db
-*.html
-*.png
 *.zip
 *.txt
 MLD2.py
