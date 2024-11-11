@@ -142,18 +142,6 @@ Required-by:
 
 ```
 
-### 安裝目標套件3（其他項目，以 python 3.9 為例）
-```
-py -3.9 -m pip install pandas==1.1.5 numpy==1.19.5 scipy==1.7.3
-```
-
-> 這是現今測試時，有效版本組合的其中一種，可以再自行嘗試喔～(累
-
-其中一種因版本不相容造成的錯誤
-```
-ValueError: numpy.dtype size changed, may indicate binary incompatibility. Expected 96 from C header, got 88 from PyObject
-```
-
 ### 安裝總結（隨後記內容持續更新）
 最終更新為 python 3.8，彙整前述內容如下
 ```
@@ -169,3 +157,5 @@ py -3.8 -m pip install spyder-kernels==2.5.* scikit-learn==0.22.1 pandas==1.0.1 
 ```
 py -3.8 -m pip install spyder-kernels==2.5.* scikit-learn==0.22.1 pandas==1.0.1 numpy==1.18.1 scipy==1.4.1
 ```
+
++ 
