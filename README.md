@@ -64,7 +64,7 @@ C:\Users\你的 OS 帳號名稱\AppData\Local\Microsoft\WindowsApps\python.exe
 
 ```
 
-若沒有指定版本（如 3.9），前往官網 > Downloads > Windows，Ctrl + F 找目標號碼 3.9，並且提供 **Download Windows installer (64-bit)** 下載安裝。
+若尚未安珠指定版本（如 3.9），前往官網 > Downloads > Windows，Ctrl + F 找目標號碼 3.9，並且提供 **Download Windows installer (64-bit)** 下載安裝。
 > 安裝時，記得勾選路徑添加！
 
 再次檢視，確認已安裝
