@@ -154,10 +154,10 @@ py -3.9 -m pip install pandas==1.1.5 numpy==1.19.5 scipy==1.7.3
 ValueError: numpy.dtype size changed, may indicate binary incompatibility. Expected 96 from C header, got 88 from PyObject
 ```
 
-### 安裝總結
-以 python 3.9 為例，彙整如下
+### 安裝總結（隨後記內容持續更新）
+最終更新為 python 3.8，彙整前述內容如下
 ```
-py -3.9 -m pip install spyder-kernels==2.5.* scikit-learn==1.0 pandas==1.1.5 numpy==1.19.5 scipy==1.7.3
+py -3.8 -m pip install spyder-kernels==2.5.* scikit-learn==0.22.1 pandas==1.0.1 numpy==1.18.1 scipy==1.4.1
 ```
 
 > 若採用 spyder 作 IDE，需開啟 spyder 設定， **[設定方式](https://youtu.be/miJOoagmWAw)**） 
@@ -165,3 +165,7 @@ py -3.9 -m pip install spyder-kernels==2.5.* scikit-learn==1.0 pandas==1.1.5 num
 
 ### 後記
 113/11/11 304 要執行出正確答案，scikit-learn 必須為 1.0，以上版本開始會導致答案有誤，已對上面建議內容更新。
+113/11/11 為了 204 要執行出正確答案，依據官方公告 Anaconda 2020.02，參考[官網內容](https://docs.anaconda.com/anaconda/release-notes/#anaconda-2020-02-mar-11-2020)，安裝 python 3.8，更新安裝總結彙總如下
+```
+py -3.8 -m pip install spyder-kernels==2.5.* scikit-learn==0.22.1 pandas==1.0.1 numpy==1.18.1 scipy==1.4.1
+```
