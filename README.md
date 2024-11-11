@@ -149,6 +149,8 @@ Required-by:
 
 ### 安裝總結（隨後記內容持續更新）
 最終調整為 python 3.8，綜合前述內容，彙整成如下一次安裝命令：
+> 未採用 spyder 作 IDE，無須安裝 spyder-kernels==2.5.* 
+
 ```
 py -3.8 -m pip install spyder-kernels==2.5.* scikit-learn==0.22.1 pandas==1.0.1 numpy==1.18.1 scipy==1.4.1
 ```
