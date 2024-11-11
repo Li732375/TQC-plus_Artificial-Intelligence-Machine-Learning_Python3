@@ -8,9 +8,14 @@
 於認證時間60分鐘內作答完畢，成績加總達70分（含）以上者該科合格。
 
 > 私註：簡述就是在時限內，依據題意撰寫程式，**回答題目的簡答題或選擇題內容（合計共四題）**，並繳交程式碼，無限繳交次數，可以多次修改程式碼。
+
 > 若該題檔名有 '-1' 等等其他檔案，"通常" 是[參考答案](https://github.com/babymlin/TQC_AI_Licence/tree/main)或補充內容。部分會註記更新寫法。
 
-## 各題得分彙總
+> 各題內部注意事項等依據如下測試環境配置執行時所註記（尚未調整環境）。
+
+## 各題得分彙總（依據如下測試環境配置執行）
+
+> 後續會提供環境配置調整流程（若跟我一樣不想安裝 Anaco... XP）
 
 |題號|可得分|推估主要原因|
 |:-:|:-:|:-:|
@@ -64,7 +69,7 @@ C:\Users\你的 OS 帳號名稱\AppData\Local\Microsoft\WindowsApps\python.exe
 
 ```
 
-若尚未安珠指定版本（如 3.9），前往官網 > Downloads > Windows，Ctrl + F 找目標號碼 3.9，並且提供 **Download Windows installer (64-bit)** 下載安裝。
+若尚未安珠指定版本（假設為 3.9），前往官網 > Downloads > Windows，Ctrl + F 找目標號碼 3.9，並且提供 **Download Windows installer (64-bit)** 下載安裝。
 > 安裝時，記得勾選路徑添加！
 
 再次檢視，確認已安裝
@@ -78,7 +83,7 @@ C:\Users\你的 OS 帳號名稱\AppData\Local\Microsoft\WindowsApps\python.exe
 
 ### 安裝目標套件1（若是採用 spyder 作 IDE，需安裝 spyder-kernels 2.5.*，否則跳過，至 **[安裝目標套件2](https://github.com/Li732375/TQC-plus_Artificial-Intelligence-Machine-Learning_Python3/blob/master/README.md#%E5%AE%89%E8%A3%9D%E7%9B%AE%E6%A8%99%E5%A5%97%E4%BB%B62%E4%BB%A5-scikit-learn-11-%E7%82%BA%E4%BE%8B)**） 
 
-以 python 3.9 為例
+假設以 python 3.9 為例
 ```
 py -3.9 -m pip install spyder-kernels==2.5.*
 ```
@@ -143,7 +148,7 @@ Required-by:
 ```
 
 ### 安裝總結（隨後記內容持續更新）
-最終更新為 python 3.8，彙整前述內容如下
+最終調整為 python 3.8，綜合前述內容，彙整成如下一次安裝命令：
 ```
 py -3.8 -m pip install spyder-kernels==2.5.* scikit-learn==0.22.1 pandas==1.0.1 numpy==1.18.1 scipy==1.4.1
 ```
