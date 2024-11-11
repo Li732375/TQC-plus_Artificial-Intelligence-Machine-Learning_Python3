@@ -164,8 +164,8 @@ py -3.8 -m pip install spyder-kernels==2.5.* scikit-learn==0.22.1 pandas==1.0.1 
 
 
 ### 後記
-113/11/11 304 要執行出正確答案，scikit-learn 必須為 1.0，以上版本開始會導致答案有誤，已對上面建議內容更新。
-113/11/11 為了 204 要執行出正確答案，依據官方公告 Anaconda 2020.02，參考[官網內容](https://docs.anaconda.com/anaconda/release-notes/#anaconda-2020-02-mar-11-2020)，安裝 python 3.8，更新安裝總結彙總如下
++ 113/11/11 304 要執行出正確答案，scikit-learn 必須為 1.0，以上版本開始會導致答案有誤，已對上面建議內容更新。
++ 113/11/11 為了 204 要執行出正確答案，依據官方公告 Anaconda 2020.02，參考[官網內容](https://docs.anaconda.com/anaconda/release-notes/#anaconda-2020-02-mar-11-2020)，安裝 python 3.8，更新安裝總結彙總如下
 ```
 py -3.8 -m pip install spyder-kernels==2.5.* scikit-learn==0.22.1 pandas==1.0.1 numpy==1.18.1 scipy==1.4.1
 ```
