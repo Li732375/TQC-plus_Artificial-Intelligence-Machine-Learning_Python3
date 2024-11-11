@@ -157,7 +157,11 @@ ValueError: numpy.dtype size changed, may indicate binary incompatibility. Expec
 ### 安裝總結
 以 python 3.9 為例，彙整如下
 ```
-py -3.9 -m pip install spyder-kernels==2.5.* scikit-learn==1.1 pandas==1.1.5 numpy==1.19.5 scipy==1.7.3
+py -3.9 -m pip install spyder-kernels==2.5.* scikit-learn==1.0 pandas==1.1.5 numpy==1.19.5 scipy==1.7.3
 ```
 
 > 若採用 spyder 作 IDE，需開啟 spyder 設定， **[設定方式](https://youtu.be/miJOoagmWAw)**） 
+
+
+### 後記
+113/11/11 304 要執行出正確答案，scikit-learn 必須為 1.0，以上版本開始會導致答案有誤，已對上面建議內容更新。
