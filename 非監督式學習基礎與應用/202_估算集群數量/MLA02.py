@@ -17,8 +17,8 @@ eps_grid = np.linspace(0.3, 1.2, num = 10) # 設定 eps 的範圍
 silhouette_scores = []
 
 # TODO
-from sklearn.cluster import DBSCAN
-from sklearn.metrics import silhouette_score
+from sklearn.cluster import DBSCAN # 大小寫有差異
+from sklearn.metrics import silhouette_score # 待編修檔會有一個同名的變數，務必修改變數名稱
 
 for eps in eps_grid:
     # Train DBSCAN clustering model 訓練DBSCAN分群模型
@@ -48,14 +48,39 @@ best_index = np.argmax(silhouette_scores) # 找出最大 silhouette score 的索
 best_eps = eps_grid[best_index]  # 對應的最佳 epsilon
 best_silhouette_score = silhouette_scores[best_index] # 最大 silhouette score
 print(f"Best epsilon = {best_eps:4f}, Max silhouette_score = {best_silhouette_score:.4f}")
+# =============================================================================
+# # Best params2
+# max_sil = max(s[1] for s in silhouette_scores)
+# best_eps = next(s[0] for s in silhouette_scores if s[1] == max_sil)
+# print("Best epsilon =", int(best_eps * 10000) / 10000)
+# print("MAX sil = ", round(max_sil, 4))
+# # =============================================================================
+# # [expression for item in iterable if condition]
+# # expression 是對每個元素的操作，通常是對 item 進行某些處理。
+# # iterable 是要遍歷的對象（例如列表、集合、字典等）。
+# # if condition 是過濾條件，表示只有當 condition 為 True 時才會執行 expression。
+# #     
+# # for s in silhouette_scores 會遍歷 silhouette_scores 中的每個元素（每個元素是像 
+# # [eps, silhouette_score] 這樣的列表）。
+# # if s[1] == best_silhouette 是過濾條件，這裡是說，只有當 s[1]（即每個元素中的第
+# # 二個項，對應於 silhouette_score）等於 best_silhouette 時，才會把這個元素包含在
+# # 迭代中。
+# # s[0] 就是對應於符合條件的元素中的第一項，也就是 eps 值。
+# #
+# # 先執行 for，通過 if 的，才會進 expression，否則該元素跳過不執行 expression。
+# # =============================================================================
+# =============================================================================
+ 
+# =============================================================================
+# # Best params3
+# max_sil = max(s[1] for s in silhouette_scores)
+# best_eps = [s[0] for s in silhouette_scores if s[1] == max_sil][0]
+# 
+# print("Best epsilon =", int(best_eps * 10000) / 10000)
+# print("MAX sil = ", round(max_sil, 4))
+# =============================================================================
 
 # Associated model and labels for best epsilon
-model = DBSCAN(eps = best_eps, min_samples = 5) # 使用最佳 epsilon 重新訓練模型
-# 載入新資料
-data = pd.read_csv('data_perf_add.txt', sep = ',', header = None, 
-                   names = ['x', 'y'])  # 使用 ',' 作為分隔符
-labels = model.fit_predict(data) # 提取標籤
-print(f"New data of Max silhouette_score = {silhouette_score(data, labels):.4f}")
 
 # Check for unassigned datapoints in the labels
 # TODO
@@ -67,6 +92,12 @@ print(f"Estimated number of clusters = {num_clusters}")
 
 # Extracts the core samples from the trained model
 # TODO
+model = DBSCAN(eps = best_eps, min_samples = 5) # 使用最佳 epsilon 重新訓練模型
+# 載入新資料
+data = pd.read_csv('data_perf_add.txt', sep = ',', header = None, 
+                   names = ['x', 'y'])  # 使用 ',' 作為分隔符
+labels = model.fit_predict(data) # 提取標籤
+print(f"New data of Max silhouette_score = {silhouette_score(data, labels):.4f}")
 
 
 # =============================================================================
@@ -97,5 +128,5 @@ print(f"Estimated number of clusters = {num_clusters}")
 # 4. 擴展聚類：將核心點的所有鄰域內的點加入到該聚類中，並檢查這些新加入的點是否也為
 # 核心點。如果是，則重複擴展過程。
 # 
-# 5.重複步驟：重複上述步驟，直到所有點都被標記為聚類點或噪音點。
+# 5. 重複步驟：重複上述步驟，直到所有點都被標記為聚類點或噪音點。
 # =============================================================================
