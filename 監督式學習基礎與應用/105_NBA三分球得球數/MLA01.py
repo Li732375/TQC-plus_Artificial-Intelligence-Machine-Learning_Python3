@@ -34,8 +34,6 @@ print(f"三分球得球數= {NBApoints_linear_model_predict_result[0]:.4f}")
 # 計算 R-squared 和 MSE 值
 from sklearn.metrics import mean_squared_error, r2_score
 
-NBApoints_linear_model_predict_result = NBApoints_linear_model.predict(train_X)
-
 r_squared = r2_score(NBApoints_data["3P"], 
                      NBApoints_linear_model_predict_result)
 print(f"R_squared值 = {r_squared:.4f}")
