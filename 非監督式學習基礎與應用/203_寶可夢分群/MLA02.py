@@ -40,17 +40,23 @@ print(f"最小群元素個數: {min_cluster_size}")
 max_cluster_size = cluster_counts.max()  # 最大群元素個數
 print(f"最大群元素個數: {max_cluster_size}")
 
-data['Cluster'] = cluster_model.labels_  # 將分群結果加入資料中
-mean_speed_per_cluster = data.groupby('Cluster')['Speed'].mean() # 先分群，後計算每一群 Speed 的平均值
-#print(f"{round(mean_speed_per_cluster)}") # 分類群集的 Speed 平均值
-
 
 # 找到 Speed 有遺漏值的兩隻寶可夢，並填入組內平均
 # TODO
 print(data[data['Speed'].isna()]) # 有遺漏值的兩隻寶可夢
-nan_index = data[data['Speed'].isna()].index # 取得索引值
-#print(nan_index)
 
 print('\nFill after')
-data.loc[data['Speed'].isna(), 'Speed'] = data['Cluster'].map(round(mean_speed_per_cluster)) # 填補 Speed 遺漏值
-print(data.loc[nan_index, 'Speed']) # 有遺漏值的兩隻寶可夢 Speed 
+
+data['Cluster'] = cluster_model.labels_  # 將分群結果加入資料中
+mean_speed_per_cluster = data.groupby('Cluster')['Speed'].mean() # 先分群，後計算每一群 Speed 的平均值
+#print(f"{round(mean_speed_per_cluster)}") # 分類群集的 Speed 平均值
+
+nan_index = data[data['Speed'].isna()].index # 取得索引值
+print(data.loc[nan_index])
+
+data.loc[nan_index, 'Speed'] = data['Cluster'].map(round(mean_speed_per_cluster)) # 填補 Speed 遺漏值
+print(data.loc[nan_index]) # 有遺漏值的兩隻寶可夢 Speed
+# =============================================================================
+# data.iloc[nan_index, 5] = data['Cluster'].map(round(mean_speed_per_cluster)) # 填補 Speed 遺漏值
+# print(data.iloc[nan_index]) # 有遺漏值的兩隻寶可夢 Speed
+# =============================================================================
