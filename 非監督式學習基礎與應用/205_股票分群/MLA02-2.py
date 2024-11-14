@@ -34,12 +34,7 @@ cov_matrix_graphical_lasso = graphical_lasso_model.covariance_
 from sklearn.cluster import AffinityPropagation
 
 # 建立 Affinity Propagation 分群模型(預設值參數)，使用 Graphical Lasso 的共變異數矩陣
-Affinity_model_graphical_lasso = AffinityPropagation(
-    damping = 0.5,                # 調節參數，控制消息的更新
-    max_iter = 200,               # 最大迭代次數
-    convergence_iter = 15,        # 收斂迭代的次數
-    random_state = 0              # 隨機狀態以保證可重現性
-    )
+Affinity_model_graphical_lasso = AffinityPropagation()
 Affinity_model_graphical_lasso.fit(cov_matrix_graphical_lasso)
 
 # 獲取分群結果
@@ -62,13 +57,7 @@ print()
 from sklearn.cluster import affinity_propagation
 
 # 使用 affinity_propagation 分群函數(預設值參數)
-labels = affinity_propagation(
-    cov_matrix_graphical_lasso,
-    damping = 0.5,                # 調節參數，控制消息的更新
-    max_iter = 200,               # 最大迭代次數
-    convergence_iter = 15,        # 收斂迭代的次數
-    random_state = 0              # 隨機狀態以保證可重現性
-)[1]
+labels = affinity_propagation(cov_matrix_graphical_lasso)[1]
 
 # 計算分群數量
 num_labels = len(set(labels))
