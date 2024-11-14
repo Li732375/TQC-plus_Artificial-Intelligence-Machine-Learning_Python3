@@ -31,8 +31,7 @@ graphical_lasso_model = GraphicalLasso()
 graphical_lasso_model.fit(X)
 
 # Build clustering model using affinity propagation 用相似性傳播構建分群模型
-labels_graphical_lasso_cv = affinity_propagation(graphical_lasso_model.covariance_, 
-                                                 random_state = 0)[1]
+labels_graphical_lasso_cv = affinity_propagation(graphical_lasso_model.covariance_)[1]
 
 # 計算分群數量
 num_labels_graphical_lasso = len(set(labels_graphical_lasso_cv))
@@ -69,8 +68,7 @@ graphical_lasso_cv_model = GraphicalLassoCV()
 graphical_lasso_cv_model.fit(X)
 
 # Build clustering model using affinity propagation 用相似性傳播構建分群模型
-labels_graphical_lasso_cv = affinity_propagation(graphical_lasso_cv_model.covariance_, 
-                                                 random_state = 0)[1]
+labels_graphical_lasso_cv = affinity_propagation(graphical_lasso_cv_model.covariance_)[1]
 
 # 計算分群數量
 num_labels_graphical_lasso_cv = len(set(labels_graphical_lasso_cv))
@@ -109,8 +107,7 @@ oas_model = OAS()
 oas_model.fit(X)
 
 # Build clustering model using affinity propagation 用相似性傳播構建分群模型
-labels_oas = affinity_propagation(oas_model.covariance_, 
-                                                 random_state = 0)[1]
+labels_oas = affinity_propagation(oas_model.covariance_)[1]
 
 # 計算分群數量
 num_labels_oas = len(set(labels_oas))
@@ -147,8 +144,7 @@ empirical_model = EmpiricalCovariance()
 empirical_model.fit(X)
 
 # Build clustering model using affinity propagation 用相似性傳播構建分群模型
-labels_empirical = affinity_propagation(empirical_model.covariance_, 
-                                                 random_state = 0)[1]
+labels_empirical = affinity_propagation(empirical_model.covariance_)[1]
 
 # 計算分群數量
 num_labels_empirical = len(set(labels_empirical))
@@ -185,7 +181,7 @@ ledoit_wolf_model = LedoitWolf()
 ledoit_wolf_model.fit(X)
 
 # Build clustering model using affinity propagation 用相似性傳播構建分群模型
-labels_ledoit_wolf = affinity_propagation(ledoit_wolf_model.covariance_, random_state = 0)[1]
+labels_ledoit_wolf = affinity_propagation(ledoit_wolf_model.covariance_)[1]
 
 # 計算分群數量
 num_labels_ledoit_wolf = len(set(labels_ledoit_wolf))
@@ -222,7 +218,7 @@ mcd_model = EllipticEnvelope()  # contamination 是異常值比例
 mcd_model.fit(X)
 
 # Build clustering model using affinity propagation 用相似性傳播構建分群模型
-labels_mcd = affinity_propagation(mcd_model.covariance_, random_state = 0)[1]
+labels_mcd = affinity_propagation(mcd_model.covariance_)[1]
 
 # 計算分群數量
 num_labels_mcd = len(set(labels_ledoit_wolf))
