@@ -31,7 +31,7 @@ model.fit(X)
 
 # Build clustering model using affinity propagation 用相似性傳播構建分群模型
 from sklearn.cluster import affinity_propagation
-_, labels = affinity_propagation(model.covariance_, random_state = 0)
+_, labels = affinity_propagation(model.covariance_)
 num_labels = len(set(labels))
 print(f'num_labels: {num_labels}')
 
