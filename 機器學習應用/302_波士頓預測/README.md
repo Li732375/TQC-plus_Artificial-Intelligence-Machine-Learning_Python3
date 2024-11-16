@@ -52,4 +52,4 @@ Journal of environmental economics and management 5.1 (1978): 81-102.
 <https://www.researchgate.net/publication/4974606_Hedonic_housing_prices_and_the_demand_for_clean_air>
 ```
 
- - 也就是說，莫非考場仍存有資料，在現狀下因資料來源中斷，該題分數**確定拿不到**。
+ - 也就是說，未在指定套件版本下，該題分數**確定拿不到**。
