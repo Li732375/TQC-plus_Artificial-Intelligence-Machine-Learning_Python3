@@ -62,6 +62,7 @@ voting_clf = VotingClassifier(estimators = [('RF', clf1), ('kNN', clf2),
 # 建立函式 kfold_cross_validation() 執行 k 折交叉驗證，並回傳準確度的平均值
 from sklearn.pipeline import make_pipeline
 from sklearn.model_selection import KFold, cross_val_score
+
 def kfold_cross_validation(scalar, model):
     """ 函式描述：執行 k 折交叉驗證
     參數：
@@ -94,7 +95,6 @@ def kfold_cross_validation(scalar, model):
 models = {'RandomForest': clf1, 'kNN': clf2, 'SVC': clf3, 'Voting': voting_clf}
 
 accuracies_train = {}
-errors_test = {}
 
 for name, model in models.items():
     model.fit(X_train, y_train)
@@ -121,7 +121,7 @@ for name, model in models.items():
     accuracy = accuracy_score(y_test, y_pred)
     accuracies_test[name] = round(accuracy, 4)
     
-    errors = (y_pred != y_test).sum()  # 計算錯誤的樣本數
+    errors = (y_pred != y_test).sum() # 計算錯誤的樣本數
     errors_test[name] = errors
 
 
@@ -142,5 +142,6 @@ unknown_pokemon_scaled = scalar.transform(unknown_pokemon)
 predicted_type = voting_clf.predict(unknown_pokemon_scaled)
 
 # 預測結果並輸出
-print("4. 投票分類器預測的Type1分類選項:", le.inverse_transform(predicted_type)[0])
+print("4. 投票分類器預測的Type1分類選項:", 
+      le.inverse_transform(predicted_type)[0])
 
