@@ -1,6 +1,6 @@
 ![圖](205_股票分群.jpg)
 ## 特別注意
- - 待編修檔裡提到
+ - 待編修檔裡，提到
 
 ```
 # Build clustering model using affinity propagation 用相似性傳播構建分群模型
