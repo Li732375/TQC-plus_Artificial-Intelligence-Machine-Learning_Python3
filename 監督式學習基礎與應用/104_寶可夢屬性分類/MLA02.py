@@ -12,6 +12,7 @@ features = ['Attack', 'Defense']
 # TODO
 print(df[features].isna().sum())
 df = df.dropna(subset = features)
+#df = df[features].dropna() # 若寫成這樣，則只會有 features 指定的欄位會保留
 
 print(df[features][:5])
 
