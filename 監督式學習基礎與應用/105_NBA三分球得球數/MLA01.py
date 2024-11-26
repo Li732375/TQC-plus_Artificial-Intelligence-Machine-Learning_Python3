@@ -32,7 +32,7 @@ NBApoints_linear_model_predict_result = NBApoints_linear_model.predict(test_X)
 print(f"三分球得球數= {NBApoints_linear_model_predict_result[0]:.4f}")
 
 # 計算 R-squared 和 MSE 值
-from sklearn.metrics import mean_squared_error, r2_score
+from sklearn.metrics import r2_score
 
 NBApoints_linear_model_predict_result = NBApoints_linear_model.predict(train_X)
 
@@ -40,10 +40,11 @@ r_squared = r2_score(NBApoints_data["3P"],
                      NBApoints_linear_model_predict_result)
 print(f"R_squared值 = {r_squared:.4f}")
 
-mse = mean_squared_error(NBApoints_data["3P"], 
-                         NBApoints_linear_model_predict_result)
-print(f"Mean Squared Error (MSE) = {mse:.4f}")
-
 # 計算 P 值是否小於 0.05
 f_statistic, p_value = f_regression(train_X, NBApoints_data["3P"])
+# =============================================================================
+# f_regression 返回兩個值：
+# F 值: 每個特徵的 F 統計量，數值越大代表特徵與目標變數的相關性越強。
+# p 值: 每個特徵對應的 p 值，表示檢驗結果的顯著性，p 值越小越有統計學意義（通常認為 p 值 < 0.05 為顯著相關）。
+# =============================================================================
 print(f"f_regresstion P值= {['Y' if p < 0.05 else 'N' for p in p_value]}")
