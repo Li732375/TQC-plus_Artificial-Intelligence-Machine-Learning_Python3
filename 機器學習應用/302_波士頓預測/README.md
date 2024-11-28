@@ -53,3 +53,8 @@ Journal of environmental economics and management 5.1 (1978): 81-102.
 ```
 
  - 也就是說，未在指定套件版本下，該題分數**確定拿不到**。
+
+## 解題提示
+ - 善用公開資料的屬性 'DESCR'，進一步理解資料
+ - pd.DataFrame(data, index, columns...)
+
