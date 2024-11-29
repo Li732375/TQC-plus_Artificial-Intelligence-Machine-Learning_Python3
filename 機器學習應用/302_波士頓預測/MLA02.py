@@ -35,6 +35,6 @@ print('RMSE:', round(mse ** 0.5, 4))
 #  ([[0.00632, 18.00, 2.310, 0, 0.5380, 6.5750, 65.20, 4.0900, 1, 296.0, 15.30, 396.90 , 4.98]])
 X_new = [[0.00632, 18.00, 2.310, 0, 0.5380, 6.5750, 65.20, 4.0900, 1, 296.0, 
           15.30, 396.90 , 4.98]]
-prediction = lm.predict(X_new)[0][0]
+prediction = lm.predict(X_new)
 print(prediction)
-print('X_new', round(prediction, 4))
+print('X_new', round(prediction[0][0], 4))
