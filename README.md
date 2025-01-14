@@ -168,3 +168,4 @@ py -3.8 -m pip install spyder-kernels==2.5.* scikit-learn==0.22.1 pandas==1.0.1 
 ```
 
 +  113/11/25 更正該科考試私註，新增適用舊版參考答案。
++  114/01/14 新增題目抽選小幫手
